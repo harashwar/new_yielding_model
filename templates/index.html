@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldVision AI | Advanced Crop Yield Prediction</title>
+    <meta name="description" content="Predict future crop yields with state-of-the-art machine learning algorithms. Boost agricultural productivity today.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-mesh"></div>
+    
+    <section class="hero">
+        <h1>YieldVision AI</h1>
+        <p>Harnessing the power of Machine Learning to revolutionize agricultural forecasting and food security.</p>
+    </section>
+
+    <div class="container">
+        <main class="card">
+            <form id="predictionForm" class="form-container">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="crop">Select Crop</label>
+                        <select id="crop" required>
+                            <option value="" disabled selected>Choose a crop...</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Potatoes">Potatoes</option>
+                            <option value="Rice, paddy">Rice, paddy</option>
+                            <option value="Sorghum">Sorghum</option>
+                            <option value="Soybeans">Soybeans</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Cassava">Cassava</option>
+                            <option value="Sweet potatoes">Sweet potatoes</option>
+                            <option value="Yams">Yams</option>
+                            <option value="Plantains and others">Plantains and others</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="rainfall">Rainfall (mm/year)</label>
+                        <input type="number" id="rainfall" placeholder="e.g. 1485" step="0.01" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="temperature">Temperature (°C)</label>
+                        <input type="number" id="temperature" placeholder="e.g. 16.37" step="0.01" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-predict" id="submitBtn">
+                    <span id="btnText">Generate Prediction</span>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </form>
+
+            <div id="resultSection" class="result-container">
+                <div class="result-card">
+                    <span class="result-unit">Estimated Harvest Yield</span>
+                    <div class="result-value" id="resValue">0.00</div>
+                    <span class="result-unit">hg/ha (Hectogram per Hectare)</span>
+                    <div class="result-range" id="resRange">Range: 0 - 0</div>
+                    <div class="accuracy-badge" id="resAccuracy">Model Accuracy: 91.66%</div>
+                </div>
+            </div>
+            
+            <div id="errorMsg" style="color: #ff4757; text-align: center; margin-top: 1rem; display: none; font-weight: 600;"></div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
